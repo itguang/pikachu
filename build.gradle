@@ -115,7 +115,6 @@ subprojects {
         ignoreFailures = false
         showViolations = true
         configFile = file("$rootDir/checkstyle.xml")
-        sourceSets = [sourceSets.orgmain, sourceSets.orgtest]
     }
 
     group = 'com.panji'

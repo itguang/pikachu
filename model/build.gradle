@@ -16,13 +16,13 @@ dependencies {
 
 // checkstyle: skip generated source code
 tasks.withType(Checkstyle) {
+    // 跳过这个目录下的文件 check,多个目录使用 , 分割
+    exclude '**/generator/**','**/com/panji/dao/**'
     source = file('src/main/java')
 }
 
 // set dependencies of check task
 check.dependsOn project(":common").check
-
-check.dependsOn project(':model').check
 
 test {
     useJUnitPlatform()

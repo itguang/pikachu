@@ -19,7 +19,7 @@ dependencies {
 
 }
 
-check.dependsOn project(':model').check
+//check.dependsOn project(':model').check
 
 test {
     useJUnitPlatform()

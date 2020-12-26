@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Param;
  * @param <PK> The Primary Key Class 如果是无主键，则可以用Model来跳过，如果是多主键则是Key类
  * @param <E> The Example Class
  */
+@SuppressWarnings("all")
 public interface MyBatisBaseDao<Model, PK extends Serializable, E> {
     /**
      * @mbg.generated
