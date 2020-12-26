@@ -22,3 +22,5 @@ api/gensrc
 application-local.properties
 application-ut-local.properties
 /gradle/
+/model/out/
+/admin/out/
