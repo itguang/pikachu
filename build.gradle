@@ -24,8 +24,10 @@ buildscript {
 
         //指定springboot 版本
         springBootVersion='2.3.7.RELEASE'
+        mybatisStartVersion = '2.1.4'
 
         lombokVersion = '1.18.12'
+        hutoolVersion = '5.5.4'
     }
     /**
      * gradle所有的jar包文件坐标都在dependencies属性内放置
@@ -67,8 +69,7 @@ allprojects {
     apply plugin: 'idea'
     //定义全局变量
     ext{
-        //指定springboot 版本
-        springBootVersion='2.3.7.RELEASE'
+
     }
 }
 /**

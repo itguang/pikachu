@@ -8,6 +8,6 @@ bootJar.enabled = false
 dependencies {
     //引入子模块 model
     compile project(':common')
-    compile 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
     runtimeOnly 'mysql:mysql-connector-java'
+    compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:$mybatisStartVersion")
 }

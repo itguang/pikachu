@@ -7,7 +7,7 @@ bootJar.enabled = false
 
 dependencies {
     // Hutool 工具类
-    compile group: 'cn.hutool', name: 'hutool-all', version: '5.5.4'
+    compile("cn.hutool:hutool-all:$hutoolVersion")
     // Apache 工具包
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
     compile 'commons-io:commons-io:2.6'
