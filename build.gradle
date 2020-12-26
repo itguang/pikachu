@@ -7,13 +7,6 @@
  * 然后才会执行剩余的build脚本。
  */
 buildscript {
-    /**
-     * 指定所使用仓库的路径
-     * mavenCentral()，中央仓库，项目中所使用的jar包都会从中央仓库下载到本地仓库。
-     *                 若本地仓库已经拥有相应的jar包，则不会重复下载
-     *                 可以使用命令maven { url "http://maven.aliyun.com/nexus/content/groups/public" }指定maven的远程仓库地址
-     * mavenLocal()本地仓库，与GRADLE_USER_HOME配置的路径一致。
-     * */
     repositories{
         mavenLocal()
         maven {url "http://maven.aliyun.com/nexus/content/groups/public/"}
@@ -21,8 +14,18 @@ buildscript {
     }
     //定义全局变量
     ext{
+        baseVersion = '1.0.0-SNAPSHOT'
+        gradleVersion = '5.1'
+        javaVersion = '11'
+
+        jacocoVersion = '0.8.3'
+        pmdVersion = '6.15.0'
+        checkstyleVersion = '8.29'
+
         //指定springboot 版本
         springBootVersion='2.3.7.RELEASE'
+
+        lombokVersion = '1.18.12'
     }
     /**
      * gradle所有的jar包文件坐标都在dependencies属性内放置
@@ -46,8 +49,9 @@ buildscript {
     dependencies{
         //引入springboot gradle 插件
         classpath"org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        classpath("org.jacoco:org.jacoco.core:$jacocoVersion")
     }
-    
+
 }
 /**
  * 引入所有模块的配置
@@ -75,20 +79,65 @@ subprojects {
     apply plugin: 'io.spring.dependency-management'
     //引入springboot 插件
     apply plugin: 'org.springframework.boot'
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'checkstyle'
+    apply plugin: 'jacoco'
+
+    // 区分生成的契约测试的 SourceSet
+    // IDEA 有个 BUG，单独设置 gensrc/test/java 为一个 SourceSet 的话，不会加入到 Test Source Root
+    // 见：https://youtrack.jetbrains.com/issue/IDEA-151925
+    sourceSets {
+        // Spring Cloud Contract 会直接从 Groovy 生成测试 Class，这里就不需要加 gensrc 目录了。
+        orgtest {
+            java.srcDir file('src/test/java')
+            resources.srcDir file('src/test/resources')
+            compileClasspath += sourceSets.test.compileClasspath
+            runtimeClasspath += sourceSets.test.runtimeClasspath
+            annotationProcessorPath += sourceSets.test.annotationProcessorPath
+        }
+        main {
+            java.srcDir 'gensrc/main/java'
+        }
+        orgmain {
+            java.srcDir file('src/main/java')
+            resources.srcDir file('src/main/resources')
+            compileClasspath += sourceSets.main.compileClasspath
+            runtimeClasspath += sourceSets.main.runtimeClasspath
+            annotationProcessorPath += sourceSets.main.annotationProcessorPath
+        }
+    }
+
+    checkstyle {
+        toolVersion = checkstyleVersion
+        ignoreFailures = false
+        showViolations = true
+        configFile = file("$rootDir/checkstyle.xml")
+        sourceSets = [sourceSets.orgmain, sourceSets.orgtest]
+    }
+
+    group = 'com.panji'
+    version = baseVersion
+
     //指定编译编译.java文件的jdk版本
-    sourceCompatibility = 11
+    sourceCompatibility = javaVersion
     //确保class文件与targetCompatibility指定版本，或者更新的java虚拟机兼容
-    targetCompatibility = 11
+    targetCompatibility = javaVersion
+
+
     //指定gradle编译时，针对java文件使用 UTF-8 编码
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
     }
+
+
     /**
      * 指定子模块所使用仓库的路径
      * */
     repositories {
         mavenLocal()
-        maven{url "http://maven.aliyun.com/nexus/content/groups/public"}
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
         mavenCentral()
     }
     /**
@@ -102,6 +151,16 @@ subprojects {
         testCompile 'org.junit.jupiter:junit-jupiter-engine'
         //引入springboot start test
         testCompile('org.springframework.boot:spring-boot-starter-test')
+
+        annotationProcessor("org.projectlombok:lombok:$lombokVersion")
+        compileOnly("org.projectlombok:lombok:$lombokVersion") {
+            force = true
+        }
+        // test
+        testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
+        testCompileOnly("org.projectlombok:lombok:$lombokVersion") {
+            force = true
+        }
     }
 
 }

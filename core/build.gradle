@@ -12,6 +12,9 @@ dependencies {
     compile project(':model')
     //引入springboot starter
     compile('org.springframework.boot:spring-boot-starter')
-    //引入lombok依赖
-    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
+
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis'
+
+
 }
