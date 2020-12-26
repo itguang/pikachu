@@ -9,7 +9,9 @@ dependencies {
     //引入子模块 model
     compile project(':common')
     runtimeOnly 'mysql:mysql-connector-java'
-    compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:$mybatisStartVersion")
+    compile group: 'com.baomidou', name: 'mybatis-plus-boot-starter', version: '3.4.1'
+    compile group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
+
 }
 
 // checkstyle: skip generated source code

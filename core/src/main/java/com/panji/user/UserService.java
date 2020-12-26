@@ -1,6 +1,12 @@
 package com.panji.user;
 
+import generator.TbUser;
+import com.panji.dao.TbUserDao;
+import generator.TbUserExample;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author guang
@@ -9,7 +15,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-    public String hello() {
-        return "hello from core";
+    @Autowired
+    private TbUserDao tbUserDao;
+
+    public List<TbUser> findByName(String name) {
+        TbUserExample example = new TbUserExample();
+        example.createCriteria().andUsernameLike(name);
+        List<TbUser> tbUsers = tbUserDao.selectByExample(example);
+        return tbUsers;
     }
 }

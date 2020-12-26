@@ -99,7 +99,7 @@ subprojects {
             annotationProcessorPath += sourceSets.test.annotationProcessorPath
         }
         main {
-            java.srcDir 'gensrc/main/java'
+            java.srcDir 'src/main/java'
         }
         orgmain {
             java.srcDir file('src/main/java')
