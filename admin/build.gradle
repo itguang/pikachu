@@ -1,3 +1,13 @@
+apply plugin: 'org.springframework.boot'
+
+bootJar {
+    baseName = 'pikachu'
+    excludeDevtools = true
+    archiveName = "${baseName}.jar"
+    enabled = true
+}
+
+
 /**
  * 引入 gradle-web依赖
  */
@@ -7,4 +17,15 @@ dependencies {
     //引入 springboot starter web
     implementation'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-security'
+}
+
+
+
+// set dependencies of check task
+check.dependsOn project(":core").check
+
+test {
+    useJUnitPlatform()
+    def env = 'env'
+    systemProperty env, System.getProperty(env, 'UT')
 }

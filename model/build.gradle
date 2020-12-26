@@ -11,3 +11,21 @@ dependencies {
     runtimeOnly 'mysql:mysql-connector-java'
     compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:$mybatisStartVersion")
 }
+
+// checkstyle: skip generated source code
+tasks.withType(Checkstyle) {
+    source = file('src/main/java')
+}
+
+// set dependencies of check task
+check.dependsOn project(":common").check
+
+check.dependsOn project(':model').check
+
+test {
+    useJUnitPlatform()
+
+    jacoco {
+        destinationFile = file("$buildDir/jacoco/coreTest.exec")
+    }
+}

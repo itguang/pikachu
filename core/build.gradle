@@ -18,3 +18,13 @@ dependencies {
 
 
 }
+
+check.dependsOn project(':model').check
+
+test {
+    useJUnitPlatform()
+
+    jacoco {
+        destinationFile = file("$buildDir/jacoco/coreTest.exec")
+    }
+}
