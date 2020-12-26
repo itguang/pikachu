@@ -1,0 +1,17 @@
+/**
+ * 解决 Execution failed for task ':gradle-core:bootJar 问题
+ * 引入 jar.enabled = true,bootJar.enabled = false
+ */
+jar.enabled = true
+bootJar.enabled = false
+/**
+ * 引入 gradle-core依赖
+ */
+dependencies {
+    //引入子模块 model
+    compile project(':model')
+    //引入springboot starter
+    compile('org.springframework.boot:spring-boot-starter')
+    //引入lombok依赖
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
+}

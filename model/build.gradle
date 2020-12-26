@@ -1,0 +1,13 @@
+/**
+ * 解决 Execution failed for task ':gradle-core:bootJar 问题
+ * 引入 jar.enabled = true,bootJar.enabled = false
+ */
+jar.enabled = true
+bootJar.enabled = false
+
+dependencies {
+    //引入子模块 model
+    compile project(':common')
+    compile 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
+    runtimeOnly 'mysql:mysql-connector-java'
+}

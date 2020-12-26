@@ -1,0 +1,6 @@
+rootProject.name = 'pikachu'
+include 'core'
+include 'admin'
+include 'model'
+include 'common'
+

@@ -1,0 +1,10 @@
+/**
+ * 引入 gradle-web依赖
+ */
+dependencies {
+    //引入子模块 core
+    implementation project(':core')
+    //引入 springboot starter web
+    implementation'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+}
