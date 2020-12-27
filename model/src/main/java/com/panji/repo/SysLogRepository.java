@@ -1,15 +1,16 @@
 package com.panji.repo;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.panji.entity.SysLog;
 import com.panji.entity.SysLogExample;
-
-import java.util.List;
-
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper
-public interface SysLogRepository {
+public interface SysLogRepository extends BaseMapper<SysLog> {
     long countByExample(SysLogExample example);
 
     int deleteByExample(SysLogExample example);
