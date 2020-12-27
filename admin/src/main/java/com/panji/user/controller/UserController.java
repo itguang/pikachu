@@ -1,7 +1,7 @@
 package com.panji.user.controller;
 
+import com.panji.entity.SysLog;
 import com.panji.user.UserService;
-import generator.TbUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,8 +18,8 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/hello")
-    public List<TbUser> hello(String name) {
-        List<TbUser> userList = userService.findByName(name);
+    public List<SysLog> hello(String name) {
+        List<SysLog> userList = userService.findByName(name);
         return userList;
     }
 }

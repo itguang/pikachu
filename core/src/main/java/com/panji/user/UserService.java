@@ -1,8 +1,8 @@
 package com.panji.user;
 
-import generator.TbUser;
-import com.panji.dao.TbUserDao;
-import generator.TbUserExample;
+import com.panji.entity.SysLog;
+import com.panji.entity.SysLogExample;
+import com.panji.repo.SysLogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,12 +16,12 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    private TbUserDao tbUserDao;
+    private SysLogRepository sysLogRepository;
 
-    public List<TbUser> findByName(String name) {
-        TbUserExample example = new TbUserExample();
+    public List<SysLog> findByName(String name) {
+        SysLogExample example = new SysLogExample();
         example.createCriteria().andUsernameLike(name);
-        List<TbUser> tbUsers = tbUserDao.selectByExample(example);
+        List<SysLog> tbUsers = sysLogRepository.selectByExample(example);
         return tbUsers;
     }
 }

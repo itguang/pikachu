@@ -1,8 +1,9 @@
-package com.panji.dao;
+package com.panji.repo;
+
+import org.apache.ibatis.annotations.Param;
 
 import java.io.Serializable;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 /**
  * DAO公共基类，由MybatisGenerator自动生成请勿修改
@@ -11,7 +12,7 @@ import org.apache.ibatis.annotations.Param;
  * @param <E> The Example Class
  */
 @SuppressWarnings("all")
-public interface MyBatisBaseDao<Model, PK extends Serializable, E> {
+public interface BaseRepository<Model, PK extends Serializable, E> {
     /**
      * @mbg.generated
      */
