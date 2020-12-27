@@ -30,6 +30,11 @@ management:
 mybatis-plus:
   # MyBatis Mapper所对应的XML文件位置
   mapper-locations: classpath:/generator/**/*Mapper.xml
+    # 实体扫描，多个package用逗号或者分号分隔
+   # type-aliases-package: com.fengwenyi.mp3demo.model
+  configuration:
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:
     # 关闭MP3.0自带的banner
     banner: false

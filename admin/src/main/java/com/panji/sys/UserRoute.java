@@ -1,4 +1,4 @@
-package com.panji.user;
+package com.panji.sys;
 
 /**
  * @author guang

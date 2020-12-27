@@ -11,6 +11,8 @@ dependencies {
     runtimeOnly 'mysql:mysql-connector-java'
     compile group: 'com.baomidou', name: 'mybatis-plus-boot-starter', version: '3.4.1'
     compile group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
+    compile 'com.baomidou:mybatis-plus-generator:3.4.1'
+    compile 'org.freemarker:freemarker:2.3.30'
 
 }
 
