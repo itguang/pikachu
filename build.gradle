@@ -7,13 +7,13 @@
  * 然后才会执行剩余的build脚本。
  */
 buildscript {
-    repositories{
+    repositories {
         mavenLocal()
-        maven {url "http://maven.aliyun.com/nexus/content/groups/public/"}
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
         mavenCentral()
     }
     //定义全局变量
-    ext{
+    ext {
         baseVersion = '1.0.0-SNAPSHOT'
         gradleVersion = '5.1'
         javaVersion = '11'
@@ -23,11 +23,15 @@ buildscript {
         checkstyleVersion = '8.29'
 
         //指定springboot 版本
-        springBootVersion='2.3.7.RELEASE'
+        springBootVersion = '2.3.7.RELEASE'
         mybatisStartVersion = '2.1.4'
 
         lombokVersion = '1.18.12'
         hutoolVersion = '5.5.4'
+
+        mybatisplusVersion = '3.4.1'
+        springfoxVersion = '3.0.0'
+        hibernatevalidatorversion = '7.0.0.Final'
     }
     /**
      * gradle所有的jar包文件坐标都在dependencies属性内放置
@@ -48,9 +52,9 @@ buildscript {
      *    name:与maven的artifactId一致。
      *    version:与maven的version一致。
      */
-    dependencies{
+    dependencies {
         //引入springboot gradle 插件
-        classpath"org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
         classpath("org.jacoco:org.jacoco.core:$jacocoVersion")
     }
 
@@ -68,7 +72,7 @@ allprojects {
     //指定ide环境，idea
     apply plugin: 'idea'
     //定义全局变量
-    ext{
+    ext {
 
     }
 }
@@ -151,7 +155,7 @@ subprojects {
         testCompile 'org.junit.jupiter:junit-jupiter-engine'
         //引入springboot start test
         testCompile('org.springframework.boot:spring-boot-starter-test')
-        implementation'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.springframework.boot:spring-boot-starter-web'
 
         annotationProcessor("org.projectlombok:lombok:$lombokVersion")
         compileOnly("org.projectlombok:lombok:$lombokVersion") {

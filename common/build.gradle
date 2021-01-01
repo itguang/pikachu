@@ -10,7 +10,10 @@ dependencies {
     compile("cn.hutool:hutool-all:$hutoolVersion")
     // Apache 工具包
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
+    compile group: 'com.google.guava', name: 'guava', version: '30.1-jre'
     compile 'commons-io:commons-io:2.6'
     compile("com.esotericsoftware:kryo-shaded:3.0.3")
+    compile("org.hibernate.validator:hibernate-validator:$hibernatevalidatorversion")
+
 
 }
