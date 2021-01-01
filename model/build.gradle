@@ -12,7 +12,7 @@ dependencies {
     // https://baomidou.com/ 查看 mybatis-plus 的全部功能
     compile("com.baomidou:mybatis-plus-boot-starter:$mybatisplusVersion")
     compile("io.springfox:springfox-boot-starter:$springfoxVersion")
-
+    compile("com.github.xiaoymin:knife4j-spring-boot-starter:$knife4jVersion")
 
 }
 

@@ -1,4 +1,4 @@
-package com.panji.user;
+package com.panji.test;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;

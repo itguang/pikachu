@@ -31,6 +31,7 @@ buildscript {
 
         mybatisplusVersion = '3.4.1'
         springfoxVersion = '3.0.0'
+        knife4jVersion = '3.0.2'
         hibernatevalidatorversion = '7.0.0.Final'
     }
     /**

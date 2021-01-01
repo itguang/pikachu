@@ -1,9 +1,10 @@
-package com.panji.sys.data.vo;
+package com.panji.test.vo;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.panji.entity.enums.TestStatus;
 import com.panji.entity.enums.TestType;
 import com.panji.jackson.EnumToListSerializer;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -18,16 +19,19 @@ public class TestEnumVO {
      * 类型枚举
      */
     @JsonSerialize(using = EnumToListSerializer.class)
+    @ApiModelProperty("测试 Type")
     private TestType type;
 
     /**
      * 名称
      */
+    @ApiModelProperty("名称")
     private String name;
 
     /**
      * 状态
      */
     @JsonSerialize(using = EnumToListSerializer.class)
+    @ApiModelProperty("状态")
     private TestStatus status;
 }

@@ -2,15 +2,16 @@ package com.panji.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
-import lombok.Data;
 
 /**
  * sys_log
  * @author 
  */
-@ApiModel(value="com.panji.entity.SysLog系统日志")
+@ApiModel(value = "SysLog系统日志")
 @Data
 public class SysLog implements Serializable {
     private Long id;

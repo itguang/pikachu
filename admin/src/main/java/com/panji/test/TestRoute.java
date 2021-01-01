@@ -1,8 +1,8 @@
-package com.panji.user;
+package com.panji.test;
 
 /**
  * @author guang
  * @since 2020/12/26 3:11 下午
  */
-public class UserRoute {
+public final class TestRoute {
 }
