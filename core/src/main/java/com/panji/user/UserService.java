@@ -35,7 +35,6 @@ public class UserService {
                 .orderByDesc("id");
         List<SysLog> selectPage = sysLogRepository.selectList(wrapper);
         return selectPage;
-
     }
 
     /**

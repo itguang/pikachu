@@ -11,5 +11,6 @@ dependencies {
     // Apache 工具包
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
     compile 'commons-io:commons-io:2.6'
+    compile("com.esotericsoftware:kryo-shaded:3.0.3")
 
 }

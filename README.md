@@ -4,5 +4,14 @@
 
 ## 模块简介
 
+* admin
+
+* core
+
+* [model](./model/README.md)
+
+* common
+
+
 ## 开发规范与流程
 
