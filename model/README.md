@@ -14,8 +14,7 @@
 
 3. 打开 pikachu 项目, 点击右边窗口 DataSource 窗口,连接数据,进行 mybatis 代码生成
 
-![](https://itguang.oss-cn-beijing.aliyuncs.com/20201227155329.png)
-
+![](https://itguang.oss-cn-beijing.aliyuncs.com/20210101164332.png)
 4. 生成完毕,可以看到 model 模块多了几个文件
 
 ![](https://itguang.oss-cn-beijing.aliyuncs.com/20201227155514.png)
