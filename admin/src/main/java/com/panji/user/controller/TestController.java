@@ -21,7 +21,7 @@ import java.util.List;
  * @since 2020/12/26 3:12 下午
  */
 @RestController
-public class UserController {
+public class TestController {
     @Autowired
     private UserService userService;
 

@@ -3,12 +3,12 @@ package com.panji.repo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.panji.entity.EmunTest;
 import com.panji.entity.EmunTestExample;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-
-//@Mapper
+@Repository
 public interface EmunTestRepository extends BaseMapper<EmunTest> {
     long countByExample(EmunTestExample example);
 
