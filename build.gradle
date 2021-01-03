@@ -17,6 +17,8 @@ buildscript {
         baseVersion = '1.0.0-SNAPSHOT'
         gradleVersion = '5.1'
         javaVersion = '11'
+        junitVersion = '5.6.0'
+        slf4jVersion = '1.7.25'
 
         jacocoVersion = '0.8.3'
         pmdVersion = '6.15.0'
@@ -32,6 +34,7 @@ buildscript {
         mybatisplusVersion = '3.4.1'
         springfoxVersion = '3.0.0'
         knife4jVersion = '3.0.2'
+        jacksonDatatypeVersion = '2.8.9'
         hibernatevalidatorversion = '7.0.0.Final'
     }
     /**
@@ -150,15 +153,15 @@ subprojects {
      */
     dependencies {
         //引入log4j
-        compile 'org.slf4j:slf4j-api:1.7.25'
+        compile("org.slf4j:slf4j-api:$slf4jVersion")
         //引入Junit 单元测试
-        testCompile 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+        testCompile("org.junit.jupiter:junit-jupiter-api:$junitVersion")
         testCompile 'org.junit.jupiter:junit-jupiter-engine'
         //引入springboot start test
         testCompile('org.springframework.boot:spring-boot-starter-test')
         implementation 'org.springframework.boot:spring-boot-starter-web'
 
-        compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.8.9'
+        compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonDatatypeVersion")
         compile("com.github.xiaoymin:knife4j-spring-boot-starter:$knife4jVersion")
 
         annotationProcessor("org.projectlombok:lombok:$lombokVersion")
