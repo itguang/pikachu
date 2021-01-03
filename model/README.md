@@ -10,7 +10,7 @@
 
 1. 打开 idea 插件中心,安装插件 Free Mybatis plugin ,安装完毕,重启启用.
 2. 打开 idea 配置中心,按照如下配置:
-   ![](https://itguang.oss-cn-beijing.aliyuncs.com/20210101164128.png)
+   ![](https://itguang.oss-cn-beijing.aliyuncs.com/20210103143902.png)
 
 3. 打开 pikachu 项目, 点击右边窗口 DataSource 窗口,连接数据,进行 mybatis 代码生成
 

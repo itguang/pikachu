@@ -1,4 +1,4 @@
-package com.panji.entity.enums;
+package com.panji.enums;
 
 import com.baomidou.mybatisplus.annotation.EnumValue;
 import lombok.AllArgsConstructor;

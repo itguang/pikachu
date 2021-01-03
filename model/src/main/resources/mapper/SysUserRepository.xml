@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.panji.repo.SysLogRepository">
-  <resultMap id="BaseResultMap" type="com.panji.entity.SysLog">
+<mapper namespace="com.panji.repository.SysUserRepository">
+  <resultMap id="BaseResultMap" type="com.panji.domain.SysUser">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
-    <result column="operation" jdbcType="VARCHAR" property="operation" />
-    <result column="method" jdbcType="VARCHAR" property="method" />
-    <result column="params" jdbcType="VARCHAR" property="params" />
-    <result column="time" jdbcType="BIGINT" property="time" />
-    <result column="ip" jdbcType="VARCHAR" property="ip" />
-    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="operator" jdbcType="BIGINT" property="operator" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,15 +69,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, username, `operation`, `method`, params, `time`, ip, create_date
+    id, username, `password`, phone, `operator`, created, updated
   </sql>
-  <select id="selectByExample" parameterType="com.panji.entity.SysLogExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.panji.domain.SysUserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from sys_log
+    from sys_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -100,84 +99,78 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from sys_log
+    from sys_user
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from sys_log
+    delete from sys_user
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.panji.entity.SysLogExample">
-    delete from sys_log
+  <delete id="deleteByExample" parameterType="com.panji.domain.SysUserExample">
+    delete from sys_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.panji.entity.SysLog" useGeneratedKeys="true">
-    insert into sys_log (username, `operation`, `method`, 
-      params, `time`, ip, create_date
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.panji.domain.SysUser" useGeneratedKeys="true">
+    insert into sys_user (username, `password`, phone, 
+      `operator`, created, updated
       )
-    values (#{username,jdbcType=VARCHAR}, #{operation,jdbcType=VARCHAR}, #{method,jdbcType=VARCHAR}, 
-      #{params,jdbcType=VARCHAR}, #{time,jdbcType=BIGINT}, #{ip,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{operator,jdbcType=BIGINT}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.panji.entity.SysLog" useGeneratedKeys="true">
-    insert into sys_log
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.panji.domain.SysUser" useGeneratedKeys="true">
+    insert into sys_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="username != null">
         username,
       </if>
-      <if test="operation != null">
-        `operation`,
+      <if test="password != null">
+        `password`,
       </if>
-      <if test="method != null">
-        `method`,
+      <if test="phone != null">
+        phone,
       </if>
-      <if test="params != null">
-        params,
+      <if test="operator != null">
+        `operator`,
       </if>
-      <if test="time != null">
-        `time`,
+      <if test="created != null">
+        created,
       </if>
-      <if test="ip != null">
-        ip,
-      </if>
-      <if test="createDate != null">
-        create_date,
+      <if test="updated != null">
+        updated,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="username != null">
         #{username,jdbcType=VARCHAR},
       </if>
-      <if test="operation != null">
-        #{operation,jdbcType=VARCHAR},
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
       </if>
-      <if test="method != null">
-        #{method,jdbcType=VARCHAR},
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="params != null">
-        #{params,jdbcType=VARCHAR},
+      <if test="operator != null">
+        #{operator,jdbcType=BIGINT},
       </if>
-      <if test="time != null">
-        #{time,jdbcType=BIGINT},
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
       </if>
-      <if test="ip != null">
-        #{ip,jdbcType=VARCHAR},
-      </if>
-      <if test="createDate != null">
-        #{createDate,jdbcType=TIMESTAMP},
+      <if test="updated != null">
+        #{updated,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.panji.entity.SysLogExample" resultType="java.lang.Long">
-    select count(*) from sys_log
+  <select id="countByExample" parameterType="com.panji.domain.SysUserExample" resultType="java.lang.Long">
+    select count(*) from sys_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update sys_log
+    update sys_user
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
@@ -185,23 +178,20 @@
       <if test="record.username != null">
         username = #{record.username,jdbcType=VARCHAR},
       </if>
-      <if test="record.operation != null">
-        `operation` = #{record.operation,jdbcType=VARCHAR},
+      <if test="record.password != null">
+        `password` = #{record.password,jdbcType=VARCHAR},
       </if>
-      <if test="record.method != null">
-        `method` = #{record.method,jdbcType=VARCHAR},
+      <if test="record.phone != null">
+        phone = #{record.phone,jdbcType=VARCHAR},
       </if>
-      <if test="record.params != null">
-        params = #{record.params,jdbcType=VARCHAR},
+      <if test="record.operator != null">
+        `operator` = #{record.operator,jdbcType=BIGINT},
       </if>
-      <if test="record.time != null">
-        `time` = #{record.time,jdbcType=BIGINT},
+      <if test="record.created != null">
+        created = #{record.created,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.ip != null">
-        ip = #{record.ip,jdbcType=VARCHAR},
-      </if>
-      <if test="record.createDate != null">
-        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      <if test="record.updated != null">
+        updated = #{record.updated,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -209,55 +199,50 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update sys_log
+    update sys_user
     set id = #{record.id,jdbcType=BIGINT},
       username = #{record.username,jdbcType=VARCHAR},
-      `operation` = #{record.operation,jdbcType=VARCHAR},
-      `method` = #{record.method,jdbcType=VARCHAR},
-      params = #{record.params,jdbcType=VARCHAR},
-      `time` = #{record.time,jdbcType=BIGINT},
-      ip = #{record.ip,jdbcType=VARCHAR},
-      create_date = #{record.createDate,jdbcType=TIMESTAMP}
+      `password` = #{record.password,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      `operator` = #{record.operator,jdbcType=BIGINT},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      updated = #{record.updated,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.panji.entity.SysLog">
-    update sys_log
+  <update id="updateByPrimaryKeySelective" parameterType="com.panji.domain.SysUser">
+    update sys_user
     <set>
       <if test="username != null">
         username = #{username,jdbcType=VARCHAR},
       </if>
-      <if test="operation != null">
-        `operation` = #{operation,jdbcType=VARCHAR},
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
       </if>
-      <if test="method != null">
-        `method` = #{method,jdbcType=VARCHAR},
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="params != null">
-        params = #{params,jdbcType=VARCHAR},
+      <if test="operator != null">
+        `operator` = #{operator,jdbcType=BIGINT},
       </if>
-      <if test="time != null">
-        `time` = #{time,jdbcType=BIGINT},
+      <if test="created != null">
+        created = #{created,jdbcType=TIMESTAMP},
       </if>
-      <if test="ip != null">
-        ip = #{ip,jdbcType=VARCHAR},
-      </if>
-      <if test="createDate != null">
-        create_date = #{createDate,jdbcType=TIMESTAMP},
+      <if test="updated != null">
+        updated = #{updated,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.panji.entity.SysLog">
-    update sys_log
+  <update id="updateByPrimaryKey" parameterType="com.panji.domain.SysUser">
+    update sys_user
     set username = #{username,jdbcType=VARCHAR},
-      `operation` = #{operation,jdbcType=VARCHAR},
-      `method` = #{method,jdbcType=VARCHAR},
-      params = #{params,jdbcType=VARCHAR},
-      `time` = #{time,jdbcType=BIGINT},
-      ip = #{ip,jdbcType=VARCHAR},
-      create_date = #{createDate,jdbcType=TIMESTAMP}
+      `password` = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      `operator` = #{operator,jdbcType=BIGINT},
+      created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

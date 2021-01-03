@@ -1,8 +1,8 @@
-package com.panji.test.vo;
+package com.panji.sys.data.vo;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.panji.entity.enums.TestStatus;
-import com.panji.entity.enums.TestType;
+import com.panji.enums.TestStatus;
+import com.panji.enums.TestType;
 import com.panji.jackson.EnumToListSerializer;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
