@@ -3,8 +3,11 @@ package com.panji.sys.controller;
 import com.panji.data.JsonResult;
 import com.panji.domain.SysUser;
 import com.panji.domain.SysUserExample;
+import com.panji.enums.TestStatus;
+import com.panji.enums.TestType;
 import com.panji.repository.SysUserRepository;
 import com.panji.sys.data.vo.SysUserVO;
+import com.panji.sys.data.vo.TestEnumVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.BeanUtils;
@@ -39,6 +42,17 @@ public class SysController {
                 return sysUserVO;
             }).collect(Collectors.toList());
         return JsonResult.ok(sysUserVOS);
+    }
+
+    @ApiOperation("测试枚举")
+    @GetMapping("test/enum")
+    public JsonResult<TestEnumVO> testEnmu() {
+        TestEnumVO testEnumVO = new TestEnumVO();
+        testEnumVO.setId(1);
+        testEnumVO.setName("测试枚举");
+        testEnumVO.setStatus(TestStatus.SUCCESS);
+        testEnumVO.setType(TestType.ONE);
+        return JsonResult.ok(testEnumVO);
     }
 
 }
