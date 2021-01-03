@@ -158,6 +158,9 @@ subprojects {
         testCompile('org.springframework.boot:spring-boot-starter-test')
         implementation 'org.springframework.boot:spring-boot-starter-web'
 
+        compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.8.9'
+        compile("com.github.xiaoymin:knife4j-spring-boot-starter:$knife4jVersion")
+
         annotationProcessor("org.projectlombok:lombok:$lombokVersion")
         compileOnly("org.projectlombok:lombok:$lombokVersion") {
             force = true

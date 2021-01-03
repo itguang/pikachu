@@ -1,19 +1,13 @@
-package com.panji.domain;
+package com.panji.sys.data.vo;
 
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
-/**
- * sys_user
- * @author 
- */
-@ApiModel(value="com.panji.domain.SysUser系统用户表")
 @Data
-public class SysUser implements Serializable {
+public class SysUserVO {
+
     /**
      * sysUserId
      */
@@ -55,6 +49,4 @@ public class SysUser implements Serializable {
      */
     @ApiModelProperty(value="更新时间")
     private LocalDateTime updated;
-
-    private static final long serialVersionUID = 1L;
 }

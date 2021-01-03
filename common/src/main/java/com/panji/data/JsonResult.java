@@ -1,24 +1,31 @@
 package com.panji.data;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
-import java.util.Optional;
+import java.io.Serializable;
 
 /**
  * @author guang
  * @since 2021/1/1 5:57 下午
  */
 @Data
-public class JsonResult<T> {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class JsonResult<T> implements Serializable {
 
+    @ApiModelProperty(value = "是否成功", required = true)
     private boolean success;
 
-    private Optional<T> data = Optional.empty();
+    @ApiModelProperty(value = "响应数据", required = false, notes = "为空的时候不存在")
+    private T data;
 
-    private Optional<Integer> errCode = Optional.empty();
+    @ApiModelProperty(value = "错误码", required = false, notes = "为空的时候不存在")
+    private Integer errCode;
 
-    private Optional<String> errMessage = Optional.empty();
+    @ApiModelProperty(value = "错误信息", required = false, notes = "为空的时候不存在")
+    private String errMessage;
 
     private JsonResult() {
     }
@@ -32,16 +39,10 @@ public class JsonResult<T> {
     public static <T> JsonResult<T> ok(@NotNull T data) {
         JsonResult<T> result = new JsonResult();
         result.setSuccess(true);
-        result.setData(Optional.of(data));
-        return result;
-    }
-
-    public static <T> JsonResult<T> ok(@NotNull Optional<T> data) {
-        JsonResult<T> result = new JsonResult();
-        result.setSuccess(true);
         result.setData(data);
         return result;
     }
+
 
     public static <T> JsonResult<T> error() {
         return error(Errors.SERVER_ERROR);
@@ -57,40 +58,8 @@ public class JsonResult<T> {
 
     public static <T> JsonResult<T> error(Integer errorCode, String errorMessage) {
         JsonResult<T> result = new JsonResult();
-        result.setErrCode(Optional.of(errorCode));
-        result.setErrMessage(Optional.ofNullable(errorMessage));
+        result.setErrCode(errorCode);
+        result.setErrMessage(errorMessage);
         return result;
-    }
-
-    public boolean isSuccess() {
-        return this.success;
-    }
-
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
-
-    public Optional<T> getData() {
-        return this.data;
-    }
-
-    public void setData(Optional<T> data) {
-        this.data = data;
-    }
-
-    public Optional<Integer> getErrCode() {
-        return this.errCode;
-    }
-
-    public void setErrCode(Optional<Integer> errCode) {
-        this.errCode = errCode;
-    }
-
-    public Optional<String> getErrMessage() {
-        return this.errMessage;
-    }
-
-    public void setErrMessage(Optional<String> errMessage) {
-        this.errMessage = errMessage;
     }
 }
