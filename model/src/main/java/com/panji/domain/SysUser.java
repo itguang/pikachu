@@ -56,5 +56,11 @@ public class SysUser implements Serializable {
     @ApiModelProperty(value="更新时间")
     private LocalDateTime updated;
 
+    /**
+     * 是否启用
+     */
+    @ApiModelProperty(value="是否启用")
+    private Boolean isEnbaled;
+
     private static final long serialVersionUID = 1L;
 }

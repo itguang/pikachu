@@ -10,12 +10,6 @@ bootJar.enabled = false
 dependencies {
     //引入子模块 model
     compile project(':model')
-    //引入springboot starter
-    compile('org.springframework.boot:spring-boot-starter')
-
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis'
-
 
 }
 

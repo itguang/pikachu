@@ -1,13 +1,15 @@
 package com.panji.repository;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.panji.domain.SysUser;
 import com.panji.domain.SysUserExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
-public interface SysUserRepository {
+public interface SysUserRepository extends BaseMapper<SysUser> {
     long countByExample(SysUserExample example);
 
     int deleteByExample(SysUserExample example);

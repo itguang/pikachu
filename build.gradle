@@ -30,6 +30,7 @@ buildscript {
 
         lombokVersion = '1.18.12'
         hutoolVersion = '5.5.4'
+        jwtVersion = '3.8.2'
 
         mybatisplusVersion = '3.4.1'
         springfoxVersion = '3.0.0'
@@ -37,25 +38,7 @@ buildscript {
         jacksonDatatypeVersion = '2.8.9'
         hibernatevalidatorversion = '7.0.0.Final'
     }
-    /**
-     * gradle所有的jar包文件坐标都在dependencies属性内放置
-     * 每一个jar包都具备以下特点
-     * 1.scope（作用域）：gradle支持compile、runtime、testCompile、testRuntime四种scope
-     *   compile：jar包在编译期与运行期依赖。
-     *   runtime：jar包在运行期依赖。
-     *   testCompile：jar包在测试编译期与运行期依赖。
-     *   testRuntime：jar包在测试运行期依赖。
-     *   补充：
-     *   providedCompile：jar包/依赖代码 仅在编译的时候需要，但是在运行时不需要依赖。
-     *   providedCompile与compile,runtime区别：
-     *   compile: 前提：apply plugin: 'war'或者apply plugin: 'java'
-     *   providedCompile:前提：apply plugin: 'war'，若前提为'java',则使用compileOnly
-     *   runtime:前提：apply plugin: 'war'
-     *   以上所说的前提，如果不正确配置的话，就会遇到依赖包无法导入，以及runtime以及providedCompile无法使用的情况。
-     * 2. group:与maven的groupId一致。
-     *    name:与maven的artifactId一致。
-     *    version:与maven的version一致。
-     */
+
     dependencies {
         //引入springboot gradle 插件
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
@@ -157,12 +140,20 @@ subprojects {
         //引入Junit 单元测试
         testCompile("org.junit.jupiter:junit-jupiter-api:$junitVersion")
         testCompile 'org.junit.jupiter:junit-jupiter-engine'
-        //引入springboot start test
+        //引入springboot starter
+        compile('org.springframework.boot:spring-boot-starter')
+        compile('org.springframework.boot:spring-boot-starter-security')
+        compile("com.auth0:java-jwt:$jwtVersion")
+        compile 'io.jsonwebtoken:jjwt:0.9.1'
+
         testCompile('org.springframework.boot:spring-boot-starter-test')
         implementation 'org.springframework.boot:spring-boot-starter-web'
+        compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
+        compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis'
 
         compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonDatatypeVersion")
         compile("com.github.xiaoymin:knife4j-spring-boot-starter:$knife4jVersion")
+
 
         annotationProcessor("org.projectlombok:lombok:$lombokVersion")
         compileOnly("org.projectlombok:lombok:$lombokVersion") {

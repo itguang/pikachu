@@ -584,6 +584,66 @@ public class SysUserExample {
             addCriterion("updated not between", value1, value2, "updated");
             return (Criteria) this;
         }
+
+        public Criteria andIsEnbaledIsNull() {
+            addCriterion("is_enbaled is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEnbaledIsNotNull() {
+            addCriterion("is_enbaled is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEnbaledEqualTo(Boolean value) {
+            addCriterion("is_enbaled =", value, "isEnbaled");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEnbaledNotEqualTo(Boolean value) {
+            addCriterion("is_enbaled <>", value, "isEnbaled");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEnbaledGreaterThan(Boolean value) {
+            addCriterion("is_enbaled >", value, "isEnbaled");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEnbaledGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("is_enbaled >=", value, "isEnbaled");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEnbaledLessThan(Boolean value) {
+            addCriterion("is_enbaled <", value, "isEnbaled");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEnbaledLessThanOrEqualTo(Boolean value) {
+            addCriterion("is_enbaled <=", value, "isEnbaled");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEnbaledIn(List<Boolean> values) {
+            addCriterion("is_enbaled in", values, "isEnbaled");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEnbaledNotIn(List<Boolean> values) {
+            addCriterion("is_enbaled not in", values, "isEnbaled");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEnbaledBetween(Boolean value1, Boolean value2) {
+            addCriterion("is_enbaled between", value1, value2, "isEnbaled");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEnbaledNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("is_enbaled not between", value1, value2, "isEnbaled");
+            return (Criteria) this;
+        }
     }
 
     /**
