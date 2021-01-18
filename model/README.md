@@ -255,6 +255,9 @@ public class TestEnumVO {
 > 注意当前端提交枚举字段的时候,取的 是 数组的第一个值,即 ONE 或者 SUCCESS 等
 
 
+## mybatis-plus 官放 demo
+ 
+> https://github.com/baomidou/mybatis-plus-samples?utm_source=gold_browser_extension
 
 
 
